@@ -19,11 +19,16 @@ Permite cadastrar livros e usuários, realizar empréstimos e devoluções de li
 ## Estrutura do Projeto
 
 sistema-biblioteca/
+
 │
 ├── projeto_biblioteca/
+
 │   ├── biblioteca.py
+
 │   ├── livro.py
+
 │   └── usuario.py
+
 │
 └── main.py
 
