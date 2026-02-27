@@ -1,5 +1,8 @@
-from projeto_biblioteca.biblioteca import Biblioteca
+from projeto_biblioteca.services.biblioteca import Biblioteca
 from time import sleep
+from projeto_biblioteca.database import criar_tabelas
+
+criar_tabelas()
 
 
 
@@ -20,7 +23,6 @@ def menu():
 def main():
     
     biblioteca = Biblioteca()
-    biblioteca.carregar_dados()
     while True:
 
         menu()
@@ -31,22 +33,34 @@ def main():
             print("O valor da opção precisa ser um número inteiro.")
 
         if opção == 1:
-            titulo = input("Titulo: ").title()
-            autor = input("Autor: ").title()
+            titulo = input("Titulo: ").title().strip()
+            autor = input("Autor: ").title().strip()
+            if not titulo or not autor:
+                print("Os campos não podem estar vazios.")
             biblioteca.adicionar_livro(titulo, autor)
 
         elif opção == 2:
-            nome = input("Nome do usuário: ").title()
+            nome = input("Nome do usuário: ").title().strip()
+            if not nome:
+                print("O campo não pode estar vazio.")
             biblioteca.cadastrar_usuario(nome)
 
         elif opção == 3:
-            usuario_id = int(input("ID do usuário: "))
-            livro_id = int(input("ID do livro: "))
+            try:
+                usuario_id = int(input("ID do usuário: "))
+                livro_id = int(input("ID do livro: "))
+            except ValueError:
+                print("ERRO! os IDs devem ser números inteiros.")
+                return
             biblioteca.emprestar_livro(usuario_id, livro_id)
 
         elif opção == 4:
-            usuario_id = int(input("ID do usuário: "))
-            livro_id = int(input("ID do livro: "))
+            try:
+                usuario_id = int(input("ID do usuário: "))
+                livro_id = int(input("ID do livro: "))
+            except ValueError:
+                print("ERRO! os IDs devem ser números inteiros.")
+                return
             biblioteca.devolver_livro(usuario_id, livro_id)
 
         elif opção == 5:
