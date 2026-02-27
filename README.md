@@ -67,7 +67,7 @@ O sistema permite gerir usuários, livros e empréstimos, aplicando validações
 
 - Python 3.10+
 
-## ⚙️ Como Executar o Projeto
+## Como Executar o Projeto
 
 1. Clone o repositório:
 
